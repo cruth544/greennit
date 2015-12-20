@@ -1,12 +1,16 @@
-%h1 Sessions#new
+%h1 New Session
 
-%div
-  = form_for @user, url: create_session_path do |f|
-    %div
-      = f.label :email
-      = f.email_field :email
-    %div
-      = f.label :password
-      = f.password_field :password
+- unless current_user
+  %div
+    = form_for @user, url: create_session_path do |f|
+      %div
+        = f.label :email
+        = f.email_field :email
+      %div
+        = f.label :password
+        = f.password_field :password
 
-    = f.submit "Log in"
+      = f.submit "Log in"
+- else
+  %div
+    You are logged in as #{current_user}
