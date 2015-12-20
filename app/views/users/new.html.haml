@@ -1,0 +1,17 @@
+%h1 Register
+
+= form_for @user do |f|
+  %div
+    = f.label "E-mail"
+    = f.email_field :email
+  %div
+    = f.label "Username"
+    = f.text_field :username
+  %div
+    = f.label "Password"
+    = f.password_field :password
+  %div
+    = f.label "Password Confirmation"
+    = f.password_field :password_confirmation
+
+  = f.submit "Create"
