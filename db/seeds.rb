@@ -9,7 +9,7 @@ User.delete_all
 
 beezy = User.create(
   email:                 "b@b.b",
-  username:                "beezy",
+  username:              "beezy",
   profile_pic:     "http://media0.giphy.com/media/eVSFl2KPjUUiQ/giphy.gif",
   password:              "b",
   password_confirmation: "b"
@@ -17,7 +17,7 @@ beezy = User.create(
 
 harper = User.create(
   email:                 "harper.reilly@mac.com",
-  username:                "harper",
+  username:              "harper",
   password:              "123",
   password_confirmation: "123"
 )
