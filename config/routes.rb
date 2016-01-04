@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # get 'users/destroy'
 
   post 'sessions/new' => 'sessions#create', as: :create_session
+  get 'sessions/destroy' => 'sessions#destroy', as: :destroy_session
 
   resources :users
   resources :sessions, only: [:new, :destroy]
