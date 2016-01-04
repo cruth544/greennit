@@ -1,3 +1,8 @@
+%div
+  %span.pull-left
+    = link_to("Home", root_path)
+  %span.pull-right
+    = current_user.username
 / .user-image
 /   = image_tag @user.profile_image_uri, width: "300px", class: "img-circle"
 /   .caption.text-over-image

@@ -1,0 +1,38 @@
+%h1 Posts#show
+%p Find me in app/views/posts/show.html.haml
+
+%div
+  %h2
+    = @post.title
+  %div
+    = image_tag "#{@post.url_link}", style: "max-width: 60%; height: auto"
+  %div
+    = @post.body
+  %div
+    %span
+      = "Upvotes: #{@post.up_vote}"
+    %span
+      = "Downvotes: #{@post.down_vote}"
+  %div
+    = render "partials/comment"
+  / %div
+  /   = link_to("Comment", create_comment_path)
+  - if @comments.length > 0
+    %div
+      - @comments.each do |comment|
+        %div
+          %h5
+            = comment.user.username
+          %div
+            = comment.body
+          / %div
+          /   = image_tag "#{post.url_link}", style: "max-width: 50px; height: auto"
+          %div
+            Up-Votes: #{comment.up_vote}
+            Down-Votes: #{comment.down_vote}
+          / %div
+          /   = link_to("Comment", create_comment_path)
+  - else
+    %div No Comments
+
+

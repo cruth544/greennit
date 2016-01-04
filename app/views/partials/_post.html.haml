@@ -1,0 +1,12 @@
+= form_for @post do |f|
+  %div.form-group
+    = f.text_field :title, :placeholder => "Title", :class => "form-control"
+  %div.form-group
+    = f.text_field :url_link, :placeholder => "URL", :class => "form-control"
+  %div.form-group
+    = f.text_area :body, :rows => "4", :placeholder => "Text", :class => "form-control"
+  / %div.form-group.text-center
+  /   = f.label "Purchased?"
+  /   = f.check_box :is_purchased
+  %br
+  = f.submit :class => "submit-form-button"

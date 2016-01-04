@@ -21,3 +21,9 @@ harper = User.create(
   password:              "123",
   password_confirmation: "123"
 )
+
+Post.create(
+  title:                 "hello, world",
+  url_link:              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSqIp7xeTFujvK28UBHn3j0QcAWHISIfDwHw0YLxWTcVb5B0XC7oDP6g5w",
+  body:                  "Hi there"
+  )

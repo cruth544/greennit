@@ -1,4 +1,38 @@
 Rails.application.routes.draw do
+  root 'posts#index'
+
+  resources :sessions, only: [:new, :destroy]
+  post 'sessions/new' => 'sessions#create', as: :create_session
+  get 'sessions/destroy' => 'sessions#destroy', as: :destroy_session
+
+  resources :users
+  resources :posts
+  resources :comments, only: [:show, :create]
+  post 'comments/new' => 'comments#create', as: :create_comment
+  # get 'comments/index'
+
+  # get 'comments/show'
+
+  # get 'comments/new'
+
+  # get 'comments/create'
+
+  # get 'comments/edit'
+
+  # get 'comments/destroy'
+
+  # get 'posts/index'
+
+  # get 'posts/show'
+
+  # get 'posts/new'
+
+  # get 'posts/create'
+
+  # get 'posts/edit'
+
+  # get 'posts/destroy'
+
   # get 'sessions/new'
 
   # get 'users/index'
@@ -11,17 +45,11 @@ Rails.application.routes.draw do
 
   # get 'users/destroy'
 
-  post 'sessions/new' => 'sessions#create', as: :create_session
-  get 'sessions/destroy' => 'sessions#destroy', as: :destroy_session
-
-  resources :users
-  resources :sessions, only: [:new, :destroy]
+  # You can have the root of your site routed with "root"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

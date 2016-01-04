@@ -1,0 +1,17 @@
+%h1 Posts#index
+%p Find me in app/views/posts/index.html.haml
+
+%div
+  = link_to("Create Post", new_post_path)
+
+%div
+  - @posts.each do |post|
+    %div
+      %h4
+        = link_to(post.title, post_path(post))
+      %div
+        = image_tag "#{post.url_link}", style: "max-width: 50px; height: auto"
+      %div User
+      %div
+        Up-Votes: #{post.up_vote}
+        Down-Votes: #{post.down_vote}
