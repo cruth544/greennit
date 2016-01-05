@@ -11,5 +11,5 @@
   %br
   = f.submit :class => "submit-form-button"
   %div
-    - if params[:action] == "show"
+    - if params[:action] == "edit"
       = link_to("Delete", @post, method: :delete, data: {confirm: "Are you sure you want to delete this post?"})
