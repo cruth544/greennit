@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:show, :create, :edit, :update, :destroy]
   post 'comments/new' => 'comments#create', as: :create_comment
 
-  namespace api do
+  namespace :api do
     resources :posts, only: [:index, :show]
   end
 
