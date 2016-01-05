@@ -3,6 +3,8 @@ class CommentsController < ApplicationController
   end
 
   def show
+    # @comment = Comment.new
+    # @comment_to_append = Comment.find(params[:id])
   end
 
   def new

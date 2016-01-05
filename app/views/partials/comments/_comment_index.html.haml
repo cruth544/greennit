@@ -14,12 +14,11 @@
         %div
           Up-Votes: #{comment.up_vote}
           Down-Votes: #{comment.down_vote}
-        / %div
-        /   = link_to("Comment", create_comment_path)
         - if current_user
+          / %div
+          /   = link_to("Comment", comment_path)
           - if comment.user == current_user
-            %div
-              = link_to("Edit", edit_comment_path(comment))
-              = link_to("Delete", comment, method: :delete, data: {confirm: "Do you really want to delete comment?"})
+            = link_to("Edit", edit_comment_path(comment))
+            = link_to("Delete", comment, method: :delete, data: {confirm: "Do you really want to delete comment?"})
 - else
   %div No Comments
