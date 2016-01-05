@@ -2,51 +2,18 @@
 %p Find me in app/views/posts/show.html.haml
 
 %div
-  %h2
-    = @post.title
-  - if embeded_video(@post.url_link)
-    %div.video-container
-      = embeded_video(@post.url_link)
-  - else
-    %div
-      = image_tag "#{@post.url_link}", style: "max-width: 80%; height: auto"
+  = render "partials/posts/post_show"
+- if current_user
   %div
-    = @post.body
+    = render "partials/comments/comment_form"
+- else
+  %br
   %div
-    %span
-      = "Upvotes: #{@post.up_vote}"
-    %span
-      = "Downvotes: #{@post.down_vote}"
-  - if @post.user == current_user
-    %div
-      = link_to("Edit Post", edit_post_path)
-  %div
-    = render "partials/comment"
-  / %div
-  /   = link_to("Comment", create_comment_path)
-  - if @comments.length > 0
-    %div
-      - @comments.each do |comment|
-        %div
-          %h5
-            - if comment.user
-              = comment.user.username
-            - else
-              = "Deleted"
-          %div
-            = comment.body
-          / %div
-          /   = image_tag "#{post.url_link}", style: "max-width: 50px; height: auto"
-          %div
-            Up-Votes: #{comment.up_vote}
-            Down-Votes: #{comment.down_vote}
-          / %div
-          /   = link_to("Comment", create_comment_path)
-          - if comment.user == current_user
-            %div
-              = link_to("Edit", edit_comment_path(comment))
-              = link_to("Delete", comment, method: :delete, data: {confirm: "Do you really want to delete comment?"})
-  - else
-    %div No Comments
+    = "Please #{link_to('Log in', new_session_path)} to comment".html_safe
+  %br
+/ %div
+/   = link_to("Comment", create_comment_path)
+%div
+  = render "partials/comments/comment_index"
 
 

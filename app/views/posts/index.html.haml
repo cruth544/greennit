@@ -1,8 +1,9 @@
 %h1 Posts#index
 %p Find me in app/views/posts/index.html.haml
 
-%div
-  = link_to("Create Post", new_post_path)
+- if current_user
+  %div
+    = link_to("Create Post", new_post_path)
 
 %div
   - @posts.each do |post|
@@ -16,7 +17,10 @@
         = link_to(image_tag("#{@url}", style: "max-width: 50px; height: auto"), post.url_link)
       %div
         - if post.user
-          = post.user.username
+          %div
+            = post.user.username
+          %div
+            = "#{post.comments.length} Comments"
         - else
           = "No User"
       %div

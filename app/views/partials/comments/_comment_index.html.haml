@@ -1,0 +1,25 @@
+- if @comments.length > 0
+  %div
+    - @comments.each do |comment|
+      %div
+        %h5
+          - if comment.user
+            = comment.user.username
+          - else
+            = "Deleted"
+        %div
+          = comment.body
+        / %div
+        /   = image_tag "#{post.url_link}", style: "max-width: 50px; height: auto"
+        %div
+          Up-Votes: #{comment.up_vote}
+          Down-Votes: #{comment.down_vote}
+        / %div
+        /   = link_to("Comment", create_comment_path)
+        - if current_user
+          - if comment.user == current_user
+            %div
+              = link_to("Edit", edit_comment_path(comment))
+              = link_to("Delete", comment, method: :delete, data: {confirm: "Do you really want to delete comment?"})
+- else
+  %div No Comments

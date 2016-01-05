@@ -3,6 +3,7 @@ class CreateComments < ActiveRecord::Migration
     create_table :comments do |t|
       t.integer :user_id
       t.integer :post_id
+      t.integer :comment_id
       t.string :picture
       t.text :body
       t.integer :up_vote

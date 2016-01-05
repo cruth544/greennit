@@ -1,3 +1,4 @@
+require 'net/http'
 class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :video_thumbnail
@@ -18,7 +19,16 @@ class ApplicationController < ActionController::Base
   def video_thumbnail url
     if url.include?("youtube")
       youtube_id = url.split("=").last
-      "//img.youtube.com/vi/#{youtube_id}/1.jpg"
+      "https://img.youtube.com/vi/#{youtube_id}/1.jpg"
+    # elsif url.include?("vimeo")
+    #   vimeo_id = url.split("/").last
+    #   uri = URI.parse("https://vimeo.com/api/v2/video/#{vimeo_id}.json")
+    #   binding.pry
+    #   response = Net::HTTP.get_response("//vimeo.com/api/v2/video/#{vimeo_id}.json")
+    #   puts response.body #this must show the JSON contents
+
+    #   # thumbnail = Net::HTTP.get_form(uri, {"search" => "thumbnail_small"})
+    #   binding.pry
     else
       false
     end
