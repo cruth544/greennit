@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :posts
-  resources :comments, only: [:show, :create]
+  resources :comments, only: [:show, :create, :edit, :update, :destroy]
   post 'comments/new' => 'comments#create', as: :create_comment
   # get 'comments/index'
 

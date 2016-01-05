@@ -1,4 +1,6 @@
 %h1 Users#show
-%p User #{@user.username} is logged in right now
+- if current_user == @user
+  %p User #{@user.username} is logged in right now
+  = link_to("Log out", destroy_session_path, class: "")
+  = link_to("Edit Account", edit_user_path)
 
-= link_to("Log out", destroy_session_path, class: "")

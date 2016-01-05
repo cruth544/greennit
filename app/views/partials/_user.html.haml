@@ -1,0 +1,10 @@
+= form_for @user do |f|
+  %div
+    = f.label "Username"
+    = f.text_field :username
+  %div
+    = f.label "Profile Picture URL"
+    = f.text_field :profile_pic
+
+  = f.submit "Edit"
+  = link_to("Delete Profile", @user, method: :delete, data: {confirm: "Are you sure?"})

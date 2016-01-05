@@ -15,3 +15,5 @@
     = f.password_field :password_confirmation
 
   = f.submit "Create"
+  %div
+    = link_to("Already a User?", new_session_path)

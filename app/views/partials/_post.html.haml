@@ -10,3 +10,5 @@
   /   = f.check_box :is_purchased
   %br
   = f.submit :class => "submit-form-button"
+  %div
+    = link_to("Delete", @post, method: :delete, data: {confirm: "Are you sure you want to delete this post?"})

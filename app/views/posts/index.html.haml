@@ -10,8 +10,15 @@
       %h4
         = link_to(post.title, post_path(post))
       %div
-        = image_tag "#{post.url_link}", style: "max-width: 50px; height: auto"
-      %div User
+        - @url = post.url_link
+        - if video_thumbnail(@url)
+          - @url = video_thumbnail(@url)
+        = image_tag "#{@url}", style: "max-width: 50px; height: auto"
+      %div
+        - if post.user
+          = post.user.username
+        - else
+          = "No User"
       %div
         Up-Votes: #{post.up_vote}
         Down-Votes: #{post.down_vote}

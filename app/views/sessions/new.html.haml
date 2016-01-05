@@ -11,6 +11,8 @@
         = f.password_field :password
 
       = f.submit "Log in"
+      %div
+        = link_to("Not a User?", new_user_path)
 - else
   %div
     You are logged in as #{current_user.username}

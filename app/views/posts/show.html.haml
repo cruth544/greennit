@@ -5,7 +5,10 @@
   %h2
     = @post.title
   %div
-    = image_tag "#{@post.url_link}", style: "max-width: 60%; height: auto"
+    - if embeded_video(@post.url_link)
+      = embeded_video(@post.url_link)
+    - else
+      = image_tag "#{@post.url_link}", style: "max-width: 60%; height: auto"
   %div
     = @post.body
   %div
@@ -13,6 +16,9 @@
       = "Upvotes: #{@post.up_vote}"
     %span
       = "Downvotes: #{@post.down_vote}"
+  - if @post.user == current_user
+    %div
+      = link_to("Edit Post", edit_post_path)
   %div
     = render "partials/comment"
   / %div
@@ -22,7 +28,10 @@
       - @comments.each do |comment|
         %div
           %h5
-            = comment.user.username
+            - if comment.user
+              = comment.user.username
+            - else
+              = "Deleted"
           %div
             = comment.body
           / %div
@@ -32,6 +41,10 @@
             Down-Votes: #{comment.down_vote}
           / %div
           /   = link_to("Comment", create_comment_path)
+          - if comment.user == current_user
+            %div
+              = link_to("Edit", edit_comment_path(comment))
+              = link_to("Delete", comment, method: :delete, data: {confirm: "Do you really want to delete comment?"})
   - else
     %div No Comments
 
