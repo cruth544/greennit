@@ -4,11 +4,12 @@
 %div
   %h2
     = @post.title
-  %div
-    - if embeded_video(@post.url_link)
+  - if embeded_video(@post.url_link)
+    %div.video-container
       = embeded_video(@post.url_link)
-    - else
-      = image_tag "#{@post.url_link}", style: "max-width: 60%; height: auto"
+  - else
+    %div
+      = image_tag "#{@post.url_link}", style: "max-width: 80%; height: auto"
   %div
     = @post.body
   %div

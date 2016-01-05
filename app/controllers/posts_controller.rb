@@ -16,6 +16,7 @@ class PostsController < ApplicationController
 
   def create
     new_post = Post.new(post_params)
+    new_post.url_link = to_gif(new_post.url_link)
 
     if current_user
       if new_post.save

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :video_thumbnail
+  helper_method :to_gif
   helper_method :embeded_video
 
   protected
@@ -23,22 +24,33 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def to_gif url
+    if url.include?(".webm")
+      gif_id = url.split(".")
+      if gif_id.last == "webm"
+        gif_id[-1] = "gif"
+      end
+      return gif_id.join(".")
+    end
+    url
+  end
+
   def embeded_video url
     if url.include?("youtube")
       youtube_id = url.split("=").last
-      my_own_content_tag(:iframe, "//www.youtube.com/embed/#{youtube_id}")
+      my_own_custom_content_tag(:iframe, "https://www.youtube.com/embed/#{youtube_id}")
       # content_tag(:iframe, src: "//www.youtube.com/embed/#{youtube_id}")
     elsif url.include?("vimeo")
       vimeo_id = url.split("/").last
-      my_own_content_tag(:iframe, "//vimeo.com/#{vimeo_id}")
+      my_own_custom_content_tag(:iframe, "https://player.vimeo.com/video/#{vimeo_id}")
       # content_tag(:iframe, src: "//vimeo.com/#{vimeo_id}")
     else
       false
     end
   end
 
-  def my_own_content_tag tag, source
-    html_string = "<#{tag.to_s} src='#{source}'></#{tag}>".html_safe
+  def my_own_custom_content_tag tag, source
+    html_string = "<#{tag.to_s} class='video' src='#{source}' frameborder='0' allowfullscreen></#{tag}>".html_safe
   end
 
   # Prevent CSRF attacks by raising an exception.
