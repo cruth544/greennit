@@ -1,14 +1,23 @@
 class PostsController < ApplicationController
 
+  def all
+    @posts = Post.all
+    render :index
+  end
+
   def index
     if current_user
       subgreenit_list = current_user.subgreens
-      @posts = []
-      subgreenit_list.each do |sub|
-        sub.posts.each do |post|
-          @posts << post
+      if subgreenit_list.length > 0
+        @posts = []
+        subgreenit_list.each do |sub|
+          sub.posts.each do |post|
+            @posts << post
+          end
         end
-      end
+      else
+        @posts = Post.all
+    end
     else
       @posts = Post.all
     end

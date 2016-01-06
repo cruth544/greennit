@@ -20,7 +20,11 @@
         %div
           Up-Votes: #{post.up_vote}
           Down-Votes: #{post.down_vote}
-  - else
+  - elsif current_user.subgreens.length == 0
     %div You are not subscribed to any Subgreenits
     %div
       = link_to("Browse Subgreenits", subgreens_path)
+  - else
+    %div There are no posts in this Subgreenit yet
+    %div
+      = link_to("Post?", new_post_path(:subgreen_id => @subgreen.id))

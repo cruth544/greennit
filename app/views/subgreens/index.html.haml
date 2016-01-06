@@ -6,5 +6,8 @@
   = form_tag('/subgreens', method: 'get') do
     = text_field_tag :search, nil, placeholder: "Search"
     = submit_tag "Search", "class" => "btn-sm btn-primary"
+%div
+  = "Don't see one you like?"
+  = link_to("Create one!", new_subgreen_path)
 
 = render "partials/subgreens/subgreen_index"

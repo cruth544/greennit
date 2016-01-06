@@ -17,6 +17,17 @@ class CommentsController < ApplicationController
     end
 
     if current_user
+      if new_comment[:body].include?("http")
+        http_array = new_comment[:body].split(" ")
+        http_array.each do |str|
+          if str.include?("http")
+            @http_str = str
+            http_array.delete(str)
+          end
+        end
+        new_comment[:body] = http_array.join(" ")
+        new_comment[:picture] = @http_str
+      end
       if new_comment.save
         current_user.comments << new_comment
         redirect_to post_path(comment_params[:post_id])

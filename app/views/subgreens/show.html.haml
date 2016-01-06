@@ -12,3 +12,6 @@
 %div
   - @posts = @subgreen.posts
   = render "partials/posts/post_index"
+
+%div
+  = link_to("Unsubscribe?", :unsubscribe => true)

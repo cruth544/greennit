@@ -31,12 +31,31 @@ class SubgreensController < ApplicationController
   end
 
   def new
+    @subgreen = Subgreen.new
+  end
+
+  def create
+    subgreen = Subgreen.new(subgreen_params)
+    subgreen.admin = current_user
+
+    if subgreen.save
+      current_user.subgreens << subgreen
+      redirect_to subgreen_path(subgreen)
+    else
+      redirect_to new_subgreen_path
+      raise "Error"
+    end
   end
 
   def edit
   end
 
   private
+
+  def subgreen_params
+    params.require(:subgreen).permit(:name, :description)
+  end
+
   def merge_sort(lst, sort_by)
     if lst.length <= 1
       lst
