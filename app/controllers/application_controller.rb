@@ -36,6 +36,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def to_gif url
+    if url.include?(".webm")
+      gif_id = url.split(".")
+      if gif_id.last == "webm"
+        gif_id[-1] = "gif"
+      end
+      return gif_id.join(".")
+    end
+    url
+  end
+
   def embeded_video url
     if url.include?("youtube")
       youtube_id = url.split("=").last
