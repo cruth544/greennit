@@ -1,5 +1,6 @@
-module API
-  class PostsController < ApplicationController
+module Api
+  class MediaController < ApplicationController
+
     def index
       render json: Post.all
     end
@@ -7,5 +8,6 @@ module API
     def show
       render json: Post.find(params[:id])
     end
+
   end
 end

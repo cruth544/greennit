@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post 'comments/new' => 'comments#create', as: :create_comment
 
   namespace :api do
-    resources :posts, only: [:index, :show]
+    resources :media, only: [:index, :show]
   end
 
   # get 'comments/index'
