@@ -24,6 +24,12 @@ harper = User.create(
 
 Post.create(
   title:                 "hello, world",
+  user_id:               "The Maker",
   url_link:              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSqIp7xeTFujvK28UBHn3j0QcAWHISIfDwHw0YLxWTcVb5B0XC7oDP6g5w",
   body:                  "Hi there"
+  )
+
+Subgreen.create(
+  name:                  "The First",
+  admin:                 "The Maker"
   )
