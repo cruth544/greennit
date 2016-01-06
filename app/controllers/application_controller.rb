@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
     if url.include?(".webm")
       gif_id = url.split(".")
       if gif_id.last == "webm"
-        gif_id[-1] = "gifv"
+        gif_id[-1] = "gif"
       end
       return gif_id.join(".")
     end
