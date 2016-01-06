@@ -8,7 +8,7 @@
           - @url = post.url_link
           - if video_thumbnail(@url)
             - @url = video_thumbnail(@url)
-          = link_to(image_tag("#{@url}", style: "max-width: 50px; height: auto"), post.url_link)
+          = link_to(image_tag("#{@url}", style: "max-width: 75px; height: auto"), post.url_link)
         %div
           - if post.user
             %div

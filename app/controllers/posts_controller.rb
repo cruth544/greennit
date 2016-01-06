@@ -22,11 +22,13 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @subgreen_id = params[:subgreen_id]
   end
 
   def create
     new_post = Post.new(post_params)
 
+    binding.pry
     if current_user
       if new_post.save
         # current_user.posts << new_post

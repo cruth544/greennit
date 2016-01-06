@@ -2,7 +2,7 @@
 %h4 SubGreenit
 
 %div
-  = link_to("Create Post", new_post_path)
+  = link_to("Create Post", new_post_path(:subgreen_id => @subgreen.id))
 
 %div
   - @posts = @subgreen.posts
