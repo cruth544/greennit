@@ -11,13 +11,9 @@ Rails.application.routes.draw do
   resources :comments, only: [:show, :create, :edit, :update, :destroy]
   post 'comments/new' => 'comments#create', as: :create_comment
 
-  # get 'subgreens/index'
-
-  # get 'subgreens/show'
-
-  # get 'subgreens/new'
-
-  # get 'subgreens/edit'
+  namespace :api do
+    resources :media, only: [:index, :show]
+  end
 
   # get 'comments/index'
 
