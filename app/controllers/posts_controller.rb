@@ -1,7 +1,17 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    if current_user
+      subgreenit_list = current_user.subgreens
+      @posts = []
+      subgreenit_list.each do |sub|
+        sub.posts.each do |post|
+          @posts << post
+        end
+      end
+    else
+      @posts = Post.all
+    end
   end
 
   def show

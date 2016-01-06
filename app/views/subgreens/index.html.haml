@@ -1,2 +1,10 @@
 %h1 Subgreens#index
 %p Find me in app/views/subgreens/index.html.haml
+
+%div
+  = "Search for SubGreenit"
+  = form_tag('/subgreens', method: 'get') do
+    = text_field_tag :search, nil, placeholder: "Search"
+    = submit_tag "Search", "class" => "btn-sm btn-primary"
+
+= render "partials/subgreens/subgreen_index"

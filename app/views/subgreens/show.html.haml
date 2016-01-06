@@ -1,7 +1,8 @@
-%h1 Subgreens#show
-%p Find me in app/views/subgreens/show.html.haml
+%h1 #{@subgreen.name}
+%h4 SubGreenit
 
-%div This is the #{@subgreen.name} Greenit
+%div
+  = link_to("Create Post", new_post_path)
 
 %div
   - @posts = @subgreen.posts

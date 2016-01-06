@@ -1,11 +1,25 @@
 %div
   %span.pull-left
-    = link_to("Home", root_path)
+    %span
+      = link_to("Home", root_path)
+    %span Subgreens:
+    - if current_user
+      - current_user.subgreens.each do |sub|
+        %span
+          = link_to(sub.name, subgreen_path(sub))
+          - if current_user.subgreens.last != sub
+            = "|"
   %span.pull-right
     - if current_user
-      = link_to(current_user.username, user_path(current_user))
+      %span
+        / - binding.pry
+        = image_tag(current_user.profile_pic, width: "25px", height: "25px")
+      %span
+        = link_to(current_user.username, user_path(current_user))
     - else
       = link_to("Log in", new_session_path)
+%br
+%br
 / .user-image
 /   = image_tag @user.profile_image_uri, width: "300px", class: "img-circle"
 /   .caption.text-over-image
