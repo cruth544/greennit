@@ -19,10 +19,10 @@ class PostsController < ApplicationController
 
     if current_user
       if new_post.save
-        current_user.posts << new_post
-        sub_id = new_post.subgreen_id
-        subgreenit = Subgreen.find(sub_id)
-        subgreenit.posts << new_post
+        # current_user.posts << new_post
+        # sub_id = new_post.subgreen_id
+        # subgreenit = Subgreen.find(sub_id)
+        # subgreenit.posts << new_post
         redirect_to post_path(new_post)
       else
         raise "Error"

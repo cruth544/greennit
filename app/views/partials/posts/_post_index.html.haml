@@ -1,0 +1,21 @@
+%div
+  - @posts.each do |post|
+    %div
+      %h4
+        = link_to(post.title, post_path(post))
+      %div
+        - @url = post.url_link
+        - if video_thumbnail(@url)
+          - @url = video_thumbnail(@url)
+        = link_to(image_tag("#{@url}", style: "max-width: 50px; height: auto"), post.url_link)
+      %div
+        - if post.user
+          %div
+            = post.user.username
+          %div
+            = "#{post.comments.length} Comments"
+        - else
+          = "No User"
+      %div
+        Up-Votes: #{post.up_vote}
+        Down-Votes: #{post.down_vote}

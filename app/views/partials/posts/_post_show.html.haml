@@ -1,11 +1,14 @@
 %h2
   = @post.title
+%div
+  %h4
+    = "Posted by #{link_to(@post.user.username, user_path(@post.user))}".html_safe
 - if embeded_video(@post.url_link)
   %div.video-container
-    = embeded_video(@post.url_link)
+    = link_to(embeded_video(@post.url_link), @post.url_link)
 - else
   %div
-    = image_tag "#{@post.url_link}", style: "max-width: 80%; height: auto"
+    = link_to(image_tag("#{@post.url_link}", style: "max-width: 80%; height: auto"), @post.url_link)
 %div
   = @post.body
 %div
