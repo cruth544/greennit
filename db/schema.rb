@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104185655) do
+ActiveRecord::Schema.define(version: 20160106012740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160104185655) do
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "post_id"
+    t.integer  "comment_id"
     t.string   "picture"
     t.text     "body"
     t.integer  "up_vote",    default: 0
@@ -29,23 +30,35 @@ ActiveRecord::Schema.define(version: 20160104185655) do
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "sub_green"
+    t.integer  "subgreen_id"
     t.string   "title"
     t.string   "url_link"
     t.text     "body"
-    t.integer  "up_vote",    default: 0
-    t.integer  "down_vote",  default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "up_vote",     default: 0
+    t.integer  "down_vote",   default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "subgreens", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "admin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subgreens_users", id: false, force: :cascade do |t|
+    t.integer "user_id",     null: false
+    t.integer "subgreen_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
     t.string   "username"
-    t.string   "profile_pic",     default: "app/assets/default-profile-image.jpg"
-    t.datetime "created_at",                                                       null: false
-    t.datetime "updated_at",                                                       null: false
+    t.string   "profile_pic",     default: "default-profile-image.jpg"
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

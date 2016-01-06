@@ -1,0 +1,17 @@
+%h1 #{@subgreen.name}
+%h4 SubGreenit
+
+- if current_user
+  - if current_user.subgreens.include?(@subgreen)
+    %div
+      = link_to("Create Post", new_post_path(:subgreen_id => @subgreen.id))
+  - else
+    %div
+      = link_to("Subscribe to Subgreenit", :subscribe => true)
+
+%div
+  - @posts = @subgreen.posts
+  = render "partials/posts/post_index"
+
+%div
+  = link_to("Unsubscribe?", :unsubscribe => true)

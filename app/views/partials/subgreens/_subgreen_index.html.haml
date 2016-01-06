@@ -1,0 +1,3 @@
+%div
+  - @subgreens.each do |subgreen|
+    = link_to(subgreen.name, subgreen_path(subgreen))

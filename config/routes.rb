@@ -6,9 +6,16 @@ Rails.application.routes.draw do
   get 'sessions/destroy' => 'sessions#destroy', as: :destroy_session
 
   resources :users
+  get 'posts/all' => 'posts#all', as: :posts_all
   resources :posts
+  resources :subgreens, only: [:index, :show, :new, :create, :edit]
   resources :comments, only: [:show, :create, :edit, :update, :destroy]
   post 'comments/new' => 'comments#create', as: :create_comment
+
+  namespace :api do
+    resources :media, only: [:index, :show]
+  end
+
   # get 'comments/index'
 
   # get 'comments/show'

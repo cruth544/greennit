@@ -1,7 +1,26 @@
 class PostsController < ApplicationController
 
-  def index
+  def all
     @posts = Post.all
+    render :index
+  end
+
+  def index
+    if current_user
+      subgreenit_list = current_user.subgreens
+      if subgreenit_list.length > 0
+        @posts = []
+        subgreenit_list.each do |sub|
+          sub.posts.each do |post|
+            @posts << post
+          end
+        end
+      else
+        @posts = Post.all
+    end
+    else
+      @posts = Post.all
+    end
   end
 
   def show
@@ -12,15 +31,18 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @subgreen_id = params[:subgreen_id]
   end
 
   def create
     new_post = Post.new(post_params)
-    new_post.url_link = to_gif(new_post.url_link)
 
     if current_user
       if new_post.save
-        current_user.posts << new_post
+        # current_user.posts << new_post
+        # sub_id = new_post.subgreen_id
+        # subgreenit = Subgreen.find(sub_id)
+        # subgreenit.posts << new_post
         redirect_to post_path(new_post)
       else
         raise "Error"
@@ -61,7 +83,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :url_link, :body)
+    params.require(:post).permit(:title, :subgreen_id, :url_link, :body)
   end
 
   def is_valid? post
