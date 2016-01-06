@@ -1,4 +1,4 @@
-module Api
+module API
   class MediaController < ApplicationController
 
     def index
