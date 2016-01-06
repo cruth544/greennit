@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160106012740) do
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "post_id"
+    t.integer  "comment_id"
     t.string   "picture"
     t.text     "body"
     t.integer  "up_vote",    default: 0
@@ -29,14 +30,14 @@ ActiveRecord::Schema.define(version: 20160106012740) do
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "sub_green"
+    t.integer  "subgreen_id"
     t.string   "title"
     t.string   "url_link"
     t.text     "body"
-    t.integer  "up_vote",    default: 0
-    t.integer  "down_vote",  default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "up_vote",     default: 0
+    t.integer  "down_vote",   default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "subgreens", force: :cascade do |t|

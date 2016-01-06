@@ -20,6 +20,9 @@ class PostsController < ApplicationController
     if current_user
       if new_post.save
         current_user.posts << new_post
+        sub_id = new_post.subgreen_id
+        subgreenit = Subgreen.find(sub_id)
+        subgreenit.posts << new_post
         redirect_to post_path(new_post)
       else
         raise "Error"
@@ -60,7 +63,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :url_link, :body)
+    params.require(:post).permit(:title, :subgreen_id, :url_link, :body)
   end
 
   def is_valid? post
