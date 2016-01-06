@@ -12,14 +12,14 @@ class CommentsController < ApplicationController
   def create
     new_comment = Comment.new(comment_params)
     if comment_params[:body] == ""
-      redirect_to post_path(comment_params[:post_id])
+      redirect_to post_path(comment_params[:id])
       return
     end
 
     if current_user
       if new_comment.save
         current_user.comments << new_comment
-        redirect_to post_path(comment_params[:post_id])
+        redirect_to post_path(comment_params[:id])
       else
         raise "Commenting Error"
       end
