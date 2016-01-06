@@ -28,7 +28,6 @@ class PostsController < ApplicationController
   def create
     new_post = Post.new(post_params)
 
-    binding.pry
     if current_user
       if new_post.save
         # current_user.posts << new_post

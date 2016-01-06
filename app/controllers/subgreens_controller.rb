@@ -16,7 +16,18 @@ class SubgreensController < ApplicationController
   end
 
   def show
+    if params[:subscribe] == "true"
+      return subscribe
+    end
     @subgreen = Subgreen.find(params[:id])
+  end
+
+  def subscribe
+    @subgreen = Subgreen.find(params[:id])
+    unless current_user.subgreens.include?(@subgreen)
+      current_user.subgreens << @subgreen
+    end
+    redirect_to subgreen_path(@subgreen)
   end
 
   def new
