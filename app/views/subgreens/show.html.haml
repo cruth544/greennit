@@ -13,5 +13,7 @@
   - @posts = @subgreen.posts
   = render "partials/posts/post_index"
 
-%div
-  = link_to("Unsubscribe?", :unsubscribe => true)
+- if current_user
+  - if current_user.subgreens.include?(@subgreen)
+    %div
+      = link_to("Unsubscribe?", :unsubscribe => true)

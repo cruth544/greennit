@@ -6,15 +6,14 @@
       = link_to("All", posts_all_path)
       = "|"
     - if current_user
-      %span Subgreens:
+      %span
+        = link_to("Subgreens:", subgreens_path)
       - if current_user.subgreens.length > 0
         - current_user.subgreens.each do |sub|
           %span
             = link_to(sub.name, subgreen_path(sub))
             - if current_user.subgreens.last != sub
               = "|"
-      - else
-        = link_to("Browse", subgreens_path)
   %span.pull-right
     - if current_user
       %span

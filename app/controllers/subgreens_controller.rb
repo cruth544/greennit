@@ -19,6 +19,9 @@ class SubgreensController < ApplicationController
     if params[:subscribe] == "true"
       return subscribe
     end
+    if params[:unsubscribe] == "true"
+      return unsubscribe
+    end
     @subgreen = Subgreen.find(params[:id])
   end
 
@@ -28,6 +31,14 @@ class SubgreensController < ApplicationController
       current_user.subgreens << @subgreen
     end
     redirect_to subgreen_path(@subgreen)
+  end
+
+  def unsubscribe
+    @subgreen = Subgreen.find(params[:id])
+    if current_user.subgreens.include?(@subgreen)
+      current_user.subgreens.delete(@subgreen)
+    end
+    redirect_to
   end
 
   def new
