@@ -56,6 +56,10 @@ class ApplicationController < ActionController::Base
       vimeo_id = url.split("/").last
       my_own_custom_content_tag(:iframe, "https://player.vimeo.com/video/#{vimeo_id}")
       # content_tag(:iframe, src: "//vimeo.com/#{vimeo_id}")
+      # https://www.facebook.com/SoFloAntonio/videos/1203662509675001/
+    elsif url.include?("facebook.com")
+      facebook_id = url.split("/").last
+      my_own_custom_content_tag(:iframe, "https://www.facebook.com/video/embed?video_id=#{facebook_id}")
     elsif url.split(".").last == "webm"
       my_own_custom_content_tag(:video, url)
     else
