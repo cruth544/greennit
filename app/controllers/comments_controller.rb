@@ -3,6 +3,8 @@ class CommentsController < ApplicationController
   end
 
   def show
+    # @comment = Comment.new
+    # @comment_to_append = Comment.find(params[:id])
   end
 
   def new
@@ -28,9 +30,15 @@ class CommentsController < ApplicationController
         new_comment[:body] = http_array.join(" ")
         new_comment[:picture] = @http_str
       end
+
+      if new_comment[:comment_id]
+        parent_comment = Comment.find(new_comment[:comment_id])
+        new_comment[:post_id] = parent_comment[:post_id]
+      end
+
       if new_comment.save
         current_user.comments << new_comment
-        redirect_to post_path(comment_params[:post_id])
+        redirect_to post_path(new_comment[:post_id])
       else
         raise "Commenting Error"
       end
@@ -76,7 +84,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:body, :post_id)
+    params.require(:comment).permit(:body, :post_id, :comment_id)
   end
 
   def update_params
