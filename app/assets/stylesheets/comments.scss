@@ -1,3 +1,35 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post-show-comments-index {
+  width: 66%;
+  margin: 10px auto;
+}
+.post-show-comment-form {
+  margin: 20px auto;
+}
+.comment-form {
+  margin: 10px auto;
+  margin-top: 75px;
+}
+.comment-submit-button {
+  margin-top: 10px;
+}
+.comments-index {
+  margin: 10px auto;
+  text-align: left
+}
+.comments-index-single {
+  // border: 1px solid black;
+  margin: 1px;
+  padding: 10px;
+  background-color: rgba(0, 102, 0, 0.075)
+}
+.comments-embeded-index {
+  // border: 1px dotted gray;
+}
+.post-show-comment-form {
+  margin: 0 auto;
+  max-width: 33%;
+}

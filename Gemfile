@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem "haml-rails", "~> 0.9"
+#paginator
+gem 'kaminari'
 gem 'bootstrap-sass', '~> 3.3.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

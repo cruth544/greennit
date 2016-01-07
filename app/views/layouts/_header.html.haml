@@ -1,26 +1,27 @@
-%div
-  %span.pull-left
-    %span
-      = link_to("Home", root_path)
-      = "|"
-      = link_to("All", posts_all_path)
-      = "|"
-    - if current_user
-      %span
-        = link_to("Subgreens:", subgreens_path)
-      - if current_user.subgreens.length > 0
-        - current_user.subgreens.each do |sub|
-          %span
-            = link_to(sub.name, subgreen_path(sub))
-            - if current_user.subgreens.last != sub
-              = "•"
-  %span.pull-right
-    - if current_user
-      %span
-        / - binding.pry
-        = image_tag(current_user.profile_pic, width: "25px", height: "25px")
-      %span
-        = link_to(current_user.username, user_path(current_user))
-    - else
-      = link_to("Log in", new_session_path)
+%header.navbar.navbar-fixed-top
+  %div.container
+    %nav
+      %ul.nav.navbar-nav.navbar-left
+        = link_to("Home", root_path)
+        = "|"
+        = link_to("All", posts_all_path)
+        = "|"
+        - if current_user
+          %li.dropdown
+            = link_to("Subgreens", subgreens_path, class: "dropdown-toggle", "data-toggle" => "dropdown")
+            %b.caret
+            - if current_user.subgreens.length > 0
+              %ul.dropdown-menu
+                - current_user.subgreens.each do |sub|
+                  %li
+                    = link_to(sub.name, subgreen_path(sub))
+      %ul.nav.navbar-nav.navbar-right
+        - if current_user
+          %li
+            = image_tag(current_user.profile_pic, width: "auto", height: "50px")
+          %li
+            = link_to(current_user.username, user_path(current_user))
+        - else
+          %li
+            = link_to("Log in", new_session_path)
 %br

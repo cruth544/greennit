@@ -21,6 +21,7 @@ class PostsController < ApplicationController
     else
       @posts = Post.all.reverse_order
     end
+    @posts = @posts.sort_by &:created_at
     @posts.reverse!
   end
 

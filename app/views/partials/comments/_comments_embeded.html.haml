@@ -1,7 +1,7 @@
 - if comment.comments.length > 0
-  %div
+  %div.comments-embeded-index
     - comment.comments.each do |comment|
-      %div
+      %div.comments-index-single
         %h5
           - if comment.user
             = comment.user.username

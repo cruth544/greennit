@@ -1,25 +1,35 @@
-%div
+%div.post-index
   - if @posts.length > 0
     - @posts.each do |post|
-      %div
-        %h4
-          = link_to(post.title, post_path(post))
-        %div
-          - @url = post.url_link
-          - if video_thumbnail(@url)
-            - @url = video_thumbnail(@url)
-          = link_to(image_tag("#{@url}", style: "max-width: 75px; height: auto"), post.url_link)
-        %div
-          - if post.user
-            %div
-              = post.user.username
-            %div
-              = "#{post.comments.length} Comments"
+      %div.post-single-index
+        %div.post-single-index-media
+          %div.post-single-index-title
+            = link_to(post.title, post_path(post))
+          - if post.subgreen
+            %div.post-single-index-subgreenit
+              = link_to("#{post.subgreen.name}", subgreen_path(post.subgreen))
+          - unless post.url_link == ""
+            - if embeded_video(post.url_link)
+              %div.post-single-index-video
+                = link_to(embeded_video(post.url_link), post_path(post))
+            - else
+              %div.post-single-index-image
+                = link_to(image_tag(post.url_link), post_path(post))
           - else
-            = "No User"
-        %div
-          .upvotes Up-Votes: #{post.up_vote}
-          .downvotes Down-Votes: #{post.down_vote}
+            %div.post-single-index-body
+              #{post.body}
+        %div.post-single-index-stats
+          %div.post-single-index-username
+            - if post.user
+              %div
+                = "by #{link_to(post.user.username, user_path(post.user))}".html_safe
+              %div
+                = "#{post.comments.length} Comment#{post.comments.length == 1 ? "" : "s"}"
+            - else
+              = "No User"
+          / %div.post-single-index-votes
+          /   .upvotes Up-Votes: #{post.up_vote}
+          /   .downvotes Down-Votes: #{post.down_vote}
   - elsif current_user.subgreens.length == 0
     %div You are not subscribed to any Subgreenits
     %div

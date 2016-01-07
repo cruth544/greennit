@@ -14,13 +14,8 @@
 - else
   %div
     = link_to(image_tag("#{@post.url_link}", style: "max-width: 80%; height: auto"), @post.url_link)
-%div
+%div.post-show-body
   = @post.body
-%div
-  %div.upvotes
-    = "Upvotes: #{@post.up_vote}"
-  %div.downvotes
-    = "Downvotes: #{@post.down_vote}"
 -if current_user
   - if @post.user == current_user
     %div

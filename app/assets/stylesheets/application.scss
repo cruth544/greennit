@@ -13,8 +13,25 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "subgreens";
 @import "posts";
 @import "comments";
-@import "subgreens";
 @import "users";
 
+html {
+  // background-color: rgba(0, 102, 0, 0.3)
+}
+
+a {
+  color: rgba(0, 150, 0, 1);
+}
+a:hover {
+  color: rgba(0, 75, 0, 1);
+}
+
+body {
+  font-family: 'Capriola', sans-serif;
+  font-size: 14px;
+  background-color: transparent;
+
+}
