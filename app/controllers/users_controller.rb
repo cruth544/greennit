@@ -8,9 +8,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    unless current_user == @user
-      redirect_to new_user_path
-    end
+    # unless current_user == @user
+    #   redirect_to new_user_path
+    # end
   end
 
   def new
@@ -31,6 +31,9 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    unless current_user == @user
+      redirect_to user_path(@user)
+    end
   end
 
   def update

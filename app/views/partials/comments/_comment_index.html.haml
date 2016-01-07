@@ -23,10 +23,8 @@
           Up-Votes: #{comment.up_vote}
           Down-Votes: #{comment.down_vote}
         - if current_user
-          / %div
-          /   = link_to("Comment", comment_path)
+          = link_to("Comment", new_comment_path(comment))
           - if comment.user == current_user
-            = link_to("Comment", new_comment_path(comment))
             = "|"
             = link_to("Edit", edit_comment_path(comment))
             = "|"
