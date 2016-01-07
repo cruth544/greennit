@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def video_thumbnail url
-    if url.include?("youtube")
+    if url.include?("youtube.com")
       youtube_id = url.split("=").last
       "https://img.youtube.com/vi/#{youtube_id}/1.jpg"
     # elsif url.include?("vimeo")
@@ -48,11 +48,11 @@ class ApplicationController < ActionController::Base
   end
 
   def embeded_video url
-    if url.include?("youtube")
+    if url.include?("youtube.com")
       youtube_id = url.split("=").last
       my_own_custom_content_tag(:iframe, "https://www.youtube.com/embed/#{youtube_id}")
       # content_tag(:iframe, src: "//www.youtube.com/embed/#{youtube_id}")
-    elsif url.include?("vimeo")
+    elsif url.include?("vimeo.com")
       vimeo_id = url.split("/").last
       my_own_custom_content_tag(:iframe, "https://player.vimeo.com/video/#{vimeo_id}")
       # content_tag(:iframe, src: "//vimeo.com/#{vimeo_id}")

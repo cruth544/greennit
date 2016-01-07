@@ -11,8 +11,6 @@
   %div
     = "Please #{link_to('Log in', new_session_path)} to comment".html_safe
   %br
-/ %div
-/   = link_to("Comment", create_comment_path)
 %div
   = render "partials/comments/comment_index"
 
