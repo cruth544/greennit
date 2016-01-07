@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def all
-    @posts = Post.all
+    @posts = Post.all.reverse_order
     render :index
   end
 
