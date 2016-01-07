@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'posts/all' => 'posts#all', as: :posts_all
   resources :posts
   resources :subgreens, only: [:index, :show, :new, :create, :edit]
-  resources :comments, only: [:show, :create, :edit, :update, :destroy]
+  resources :comments, only: [:show, :new, :create, :edit, :update, :destroy]
   post 'comments/new' => 'comments#create', as: :create_comment
 
   namespace :api do
