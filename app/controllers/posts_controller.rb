@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = @post.comments
+    @comments = @post.comments.reverse_order
   end
 
   def new

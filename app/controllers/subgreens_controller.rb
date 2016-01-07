@@ -11,7 +11,7 @@ class SubgreensController < ApplicationController
       end
     else
       @subgreens = Subgreen.all
-      merge_sort(@subgreens, "users")
+      @subgreens = merge_sort(@subgreens, "users")
     end
   end
 
@@ -90,7 +90,7 @@ class SubgreensController < ApplicationController
       right_side = right.first.users.length
     end
 
-    if left_side < right_side
+    if left_side > right_side
       [left.first] + merge(left[1..left.length], right, sort_by)
     else
       [right.first] + merge(left, right[1..right.length], sort_by)
