@@ -5,6 +5,12 @@ class CommentsController < ApplicationController
   def show
     # @comment = Comment.new
     # @comment_to_append = Comment.find(params[:id])
+    comment = Comment.find(params[:id])
+    if comment
+      redirect_to post_path(comment.post)
+    else
+      redirect_to root_path
+    end
   end
 
   def new
