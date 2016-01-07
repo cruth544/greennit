@@ -16,10 +16,10 @@ class PostsController < ApplicationController
           end
         end
       else
-        @posts = Post.all
+        @posts = Post.all.reverse_order
     end
     else
-      @posts = Post.all
+      @posts = Post.all.reverse_order
     end
   end
 
@@ -73,6 +73,13 @@ class PostsController < ApplicationController
       end
     end
     render :edit
+  end
+
+  def upvote
+    raise
+    @post = Post.find(params[:id])
+    @post.up_vote += 1
+    render post_path(@post)
   end
 
   def destroy

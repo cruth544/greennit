@@ -18,8 +18,8 @@
           - else
             = "No User"
         %div
-          Up-Votes: #{post.up_vote}
-          Down-Votes: #{post.down_vote}
+          .upvotes Up-Votes: #{post.up_vote}
+          .downvotes Down-Votes: #{post.down_vote}
   - elsif current_user.subgreens.length == 0
     %div You are not subscribed to any Subgreenits
     %div

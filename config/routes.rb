@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   post 'sessions/new' => 'sessions#create', as: :create_session
   get 'sessions/destroy' => 'sessions#destroy', as: :destroy_session
 
+  patch 'posts/:id/upvote' => 'posts#upvote'
   resources :users
   get 'posts/all' => 'posts#all', as: :posts_all
-  resources :posts
+  resources :posts do
+  end
   resources :subgreens, only: [:index, :show, :new, :create, :edit]
   resources :comments, only: [:show, :new, :create, :edit, :update, :destroy]
   post 'comments/new' => 'comments#create', as: :create_comment

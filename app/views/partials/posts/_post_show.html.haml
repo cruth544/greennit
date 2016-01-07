@@ -13,9 +13,9 @@
 %div
   = @post.body
 %div
-  %span
+  %div.upvotes
     = "Upvotes: #{@post.up_vote}"
-  %span
+  %div.downvotes
     = "Downvotes: #{@post.down_vote}"
 -if current_user
   - if @post.user == current_user
