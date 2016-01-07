@@ -1,9 +1,13 @@
 %h2
   = @post.title
 %div
-  %h4
-    - if @post.user
+  - if @post.user
+    %h4
       = "Posted by #{link_to(@post.user.username, user_path(@post.user))}".html_safe
+  - if @post.subgreen
+    %h5
+      = "In #{link_to(@post.subgreen.name, subgreen_path(@post.subgreen))}".html_safe
+
 - if embeded_video(@post.url_link)
   %div.video-container
     = link_to(embeded_video(@post.url_link), @post.url_link)

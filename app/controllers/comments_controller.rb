@@ -8,7 +8,8 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment = Comment.new
+    redirect_to root_path
+    # @comment = Comment.new
   end
 
   def create

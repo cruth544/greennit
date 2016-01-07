@@ -25,6 +25,9 @@
     %div
       = link_to("Browse Subgreenits", subgreens_path)
   - else
-    %div There are no posts in this Subgreenit yet
-    %div
-      = link_to("Post?", new_post_path(:subgreen_id => @subgreen.id))
+    - if params[:controller] == "users"
+      %div #{@user.username} has not posted anything yet
+    - else
+      %div There are no posts in this Subgreenit yet
+      %div
+        = link_to("Post?", new_post_path(:subgreen_id => @subgreen.id))

@@ -13,7 +13,7 @@
       / # = link_to("Subscribe to '#{@subgreen.name}'", :subscribe => true)
 
 %div
-  - @posts = @subgreen.posts
+  - @posts = @subgreen.posts.reverse_order
   = render "partials/posts/post_index"
 
 - if current_user

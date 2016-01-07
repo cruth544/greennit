@@ -21,6 +21,7 @@ class PostsController < ApplicationController
     else
       @posts = Post.all.reverse_order
     end
+    @posts.reverse!
   end
 
   def show
@@ -32,6 +33,9 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @subgreen_id = params[:subgreen_id]
+    unless @subgreen_id
+      redirect_to root_path
+    end
   end
 
   def create

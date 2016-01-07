@@ -11,6 +11,6 @@
 - else
   %div
     %h3 Posts
-    - @posts = @user.posts
+    - @posts = @user.posts.reverse_order
     = render "partials/posts/post_index"
 
