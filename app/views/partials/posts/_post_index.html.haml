@@ -16,8 +16,9 @@
               %div.post-single-index-image
                 = link_to(image_tag(post.url_link), post_path(post))
           - else
-            %div.post-single-index-body
-              #{post.body}
+            - if post.body != ""
+              %div.post-single-index-body
+                #{post.body}
         %div.post-single-index-stats
           %div.post-single-index-username
             - if post.user

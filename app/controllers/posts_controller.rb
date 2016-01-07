@@ -100,10 +100,11 @@ class PostsController < ApplicationController
 
   def is_valid? post
     if post.title != ""
-      if post.url_link != "" or post.text != ""
+      if post.url_link != "" or post.body != ""
         return true
       end
     end
+    flash[:error] = "Please add a URL or body"
     return false
   end
 

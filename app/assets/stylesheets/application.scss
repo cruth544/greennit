@@ -33,5 +33,15 @@ body {
   font-family: 'Capriola', sans-serif;
   font-size: 14px;
   background-color: transparent;
-
+}
+.success, .error {
+  display: inline-block;
+  margin: 0 auto;
+}
+.success {
+  color: green;
+}
+.error {
+  background-color: rgba(100, 0, 0, 0.2);
+  color: red;
 }

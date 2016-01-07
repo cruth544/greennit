@@ -9,5 +9,9 @@
     = csrf_meta_tags
   %body.text-center
     = render 'layouts/header'
+    - flash.each do |key, value|
+      %div{:class => key}
+        #{value}
+
     = yield
     = render 'layouts/footer'

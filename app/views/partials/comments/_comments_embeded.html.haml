@@ -3,6 +3,7 @@
     - comment.comments.each do |comment|
       %div.comments-index-single
         %h5
+          -binding.pry
           - if comment.user
             = comment.user.username
           - else
@@ -17,9 +18,9 @@
                 = link_to(image_tag("#{comment.picture}", style: "max-width: 250px; height: auto"), comment.picture)
           %div
             = comment.body
-        %div
-          Up-Votes: #{comment.up_vote}
-          Down-Votes: #{comment.down_vote}
+        / %div
+        /   Up-Votes: #{comment.up_vote}
+        /   Down-Votes: #{comment.down_vote}
         - if current_user
           = link_to("Comment", new_comment_path(comment))
           - if comment.user == current_user
