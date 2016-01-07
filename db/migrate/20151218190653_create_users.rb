@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    change_column(:users, :profile_pic, :string, { default: "app/assets/default-profile-image.jpg" })
+    change_column(:users, :profile_pic, :string, { default: "default-profile-image.jpg" })
   end
 
 end
