@@ -41,6 +41,10 @@ class PostsController < ApplicationController
 
   def create
     new_post = Post.new(post_params)
+    unless is_valid?(new_post)
+      redirect_to new_post_path(:subgreen_id => post_params[:subgreen_id])
+      return
+    end
 
     if current_user
       if new_post.save
@@ -104,7 +108,7 @@ class PostsController < ApplicationController
         return true
       end
     end
-    flash[:error] = "Please add a URL or body"
+    flash[:error] = "A post needs a Title and a URL or body"
     return false
   end
 
