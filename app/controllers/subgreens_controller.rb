@@ -22,7 +22,10 @@ class SubgreensController < ApplicationController
     if params[:unsubscribe] == "true"
       return unsubscribe
     end
+    @subgreens = Subgreen.all
     @subgreen = Subgreen.find(params[:id])
+    @posts = @subgreen.posts.reverse_order
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).page(5)
   end
 
   def subscribe

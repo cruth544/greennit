@@ -1,0 +1,24 @@
+%div.subgreenit-aside
+  %div
+    %h1 #{@subgreen.name}
+    %h6 #{@subgreen.users.length} Subscriber#{@subgreen.users.length == 1 ? "" : "s"}
+    - if @subgreen.admin
+      %h6 Admin: #{@subgreen.admin}
+    - if current_user
+      - if current_user.subgreens.include?(@subgreen)
+        - if params[:controller] == "posts"
+          - if params[:action] != "new" && params[:action] != "edit"
+            %div
+              = link_to("Create Post", new_post_path(:subgreen_id => @subgreen.id))
+        - else
+          = link_to("Create Post", new_post_path(:subgreen_id => @subgreen.id))
+    - if @subgreen.description
+      %div.subgreenit-description #{@subgreen.description}
+    - if current_user
+      -if current_user.subgreens.include?(@subgreen)
+        %div.subgreenit-unsubscribe
+          = link_to("Unsubscribe?", :unsubscribe => true)
+      - else
+        = link_to(:subscribe => true) do
+          Subscribe to <br>"#{@subgreen.name}"
+        / # = link_to("Subscribe to '#{@subgreen.name}'", :subscribe => true)

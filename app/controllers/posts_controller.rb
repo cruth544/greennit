@@ -2,6 +2,11 @@ class PostsController < ApplicationController
 
   def all
     @posts = Post.all.reverse_order
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
     render :index
   end
 
@@ -23,17 +28,24 @@ class PostsController < ApplicationController
     end
     @posts = @posts.sort_by &:created_at
     @posts.reverse!
+    @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(5)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.reverse_order
+    @subgreen = Subgreen.find(@post.subgreen.id)
   end
 
   def new
     @post = Post.new
     @subgreen_id = params[:subgreen_id]
+    @subgreen = Subgreen.find(@subgreen_id)
     unless @subgreen_id
       redirect_to root_path
     end
@@ -41,6 +53,9 @@ class PostsController < ApplicationController
       flash[:error] = "You must be logged in to post"
       redirect_to root_path
     end
+    @post.title = params[:title]
+    @post.url_link = params[:url_link]
+    @post.body = params[:body]
   end
 
   def create
@@ -69,6 +84,8 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @subgreen_id = @post.subgreen_id
+    @subgreen = Subgreen.find(@subgreen_id)
     unless @post.user == current_user
       flash[:error] = "You must be the creator in order to edit this post"
       return redirect_to post_path(@post)
