@@ -14,9 +14,10 @@
 - else
   %div
     = link_to(image_tag("#{@post.url_link}", style: "max-width: 80%; height: auto"), @post.url_link)
-%div.post-show-body
-  = @post.body
+- unless @post.body == ""
+  %div.post-show-body
+    = @post.body
 -if current_user
   - if @post.user == current_user
-    %div
+    %div.edit-post
       = link_to("Edit Post", edit_post_path)

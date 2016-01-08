@@ -1,5 +1,5 @@
-%h1 Comments#new
-%p Find me in app/views/comments/new.html.haml
-
-%div.form-container
+%h1 Comment
+%div.comments-index.comment-on-comment
+  = render "partials/comments/comment_show", :comment => Comment.find(params[:format])
+%div.form-container.my-forms
   = render "partials/comments/comment_form"

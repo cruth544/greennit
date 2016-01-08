@@ -28,11 +28,14 @@ a {
 a:hover {
   color: rgba(0, 75, 0, 1);
 }
-
 body {
   font-family: 'Capriola', sans-serif;
   font-size: 14px;
   background-color: transparent;
+}
+.my-forms {
+  margin: 10px auto;
+  max-width: 33%;
 }
 .success, .error {
   display: inline-block;
