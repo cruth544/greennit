@@ -32,14 +32,15 @@
           / %div.post-single-index-votes
           /   .upvotes Up-Votes: #{post.up_vote}
           /   .downvotes Down-Votes: #{post.down_vote}
-  - elsif current_user.subgreens.length == 0
-    %div You are not subscribed to any Subgreenits
-    %div
-      = link_to("Browse Subgreenits", subgreens_path)
+  - elsif current_user
+    - if current_user.subgreens.length == 0
+      %div You are not subscribed to any Subgreenits
+      %div
+        = link_to("Browse Subgreenits", subgreens_path)
   - else
     - if params[:controller] == "users"
       %div #{@user.username} has not posted anything yet
-    - else
+    - elsif @subgreen
       %div There are no posts in this Subgreenit yet
       %div
         = link_to("Post?", new_post_path(:subgreen_id => @subgreen.id))

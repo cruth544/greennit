@@ -16,10 +16,10 @@ class PostsController < ApplicationController
           end
         end
       else
-        @posts = Post.all.reverse_order
-    end
+        @posts = Post.all
+      end
     else
-      @posts = Post.all.reverse_order
+      @posts = Post.all
     end
     @posts = @posts.sort_by &:created_at
     @posts.reverse!
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
     new_post = Post.new(post_params)
     new_post.title = new_post.title.split.map(&:capitalize).join(' ')
     unless is_valid?(new_post)
-      redirect_to new_post_path(:subgreen_id => post_params[:subgreen_id])
+      redirect_to new_post_path(:subgreen_id => post_params[:subgreen_id], title: new_post.title, url_link: new_post.url_link, body: new_post.body)
       return
     end
 
@@ -105,7 +105,9 @@ class PostsController < ApplicationController
 
   def is_valid? post
     if post.title != ""
+      error = "Your post needs a title"
       if post.url_link != "" or post.body != ""
+        error += " and a URL or body"
         return true
       end
     end

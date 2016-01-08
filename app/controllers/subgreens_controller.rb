@@ -30,6 +30,7 @@ class SubgreensController < ApplicationController
     unless current_user.subgreens.include?(@subgreen)
       current_user.subgreens << @subgreen
     end
+    flash[:success] = "You have subscribed to #{@subgreen.name}"
     redirect_to subgreen_path(@subgreen)
   end
 
@@ -38,11 +39,14 @@ class SubgreensController < ApplicationController
     if current_user.subgreens.include?(@subgreen)
       current_user.subgreens.delete(@subgreen)
     end
+    flash[:success] = "You have unsubscribed from #{@subgreen.name}"
     redirect_to
   end
 
   def new
     @subgreen = Subgreen.new
+    @subgreen.name = params[:name]
+    @subgreen.description = params[:description]
   end
 
   def create
@@ -51,7 +55,7 @@ class SubgreensController < ApplicationController
       subgreen.name = subgreen.name.split.map(&:capitalize).join(' ')
       subgreen.admin = current_user
       unless is_valid?(subgreen)
-        return redirect_to new_subgreen_path
+        return redirect_to new_subgreen_path(:name => subgreen.name, description: subgreen.description)
       end
 
       if subgreen.save

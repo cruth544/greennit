@@ -6,7 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.delete_all
-
+the_maker = User.create(
+  email:                 "maker@maker.maker",
+  username:              "The Maker",
+  profile_pic:           "http://images.techhive.com/images/article/2012/11/reddit_log-100011890-large.jpg",
+  password:              "The Maker",
+  password_confirmation: "The Maker"
+  )
 beezy = User.create(
   email:                 "b@b.b",
   username:              "beezy",
@@ -22,14 +28,18 @@ harper = User.create(
   password_confirmation: "123"
 )
 
+Subgreen.create(
+  name:                  "The First",
+  admin:                 "1",
+  description:           "The First Subgreenit"
+  )
+
 Post.create(
   title:                 "hello, world",
-  user_id:               "The Maker",
+  user_id:               "1",
+  subgreen_id:           "1",
   url_link:              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSqIp7xeTFujvK28UBHn3j0QcAWHISIfDwHw0YLxWTcVb5B0XC7oDP6g5w",
   body:                  "Hi there"
   )
 
-Subgreen.create(
-  name:                  "The First",
-  admin:                 "The Maker"
-  )
+
