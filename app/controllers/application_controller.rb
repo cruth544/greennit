@@ -52,6 +52,9 @@ class ApplicationController < ActionController::Base
       youtube_id = url.split("=").last
       my_own_custom_content_tag(:iframe, "https://www.youtube.com/embed/#{youtube_id}")
       # content_tag(:iframe, src: "//www.youtube.com/embed/#{youtube_id}")
+    elsif url.include?("youtu.be")
+      youtube_id = url.split("/").last
+      my_own_custom_content_tag(:iframe, "https://www.youtube.com/embed/#{youtube_id}")
     elsif url.include?("vimeo.com")
       vimeo_id = url.split("/").last
       my_own_custom_content_tag(:iframe, "https://player.vimeo.com/video/#{vimeo_id}")
