@@ -1,29 +1,28 @@
-%div.comments-index-single
-  %h5.comments-index-user
-    - if comment.user
-      = comment.user.username
+%h5.comments-index-user
+  - if comment.user
+    = comment.user.username
+  - else
+    = "Deleted"
+%div
+  - if comment.picture
+    - if embeded_video(comment.picture)
+      %div.video-container-comment
+        = link_to(embeded_video(comment.picture), comment.picture)
     - else
-      = "Deleted"
+      %div
+        = link_to(image_tag("#{comment.picture}", style: "max-width: 250px; height: auto"), comment.picture)
   %div
-    - if comment.picture
-      - if embeded_video(comment.picture)
-        %div.video-container-comment
-          = link_to(embeded_video(comment.picture), comment.picture)
-      - else
-        %div
-          = link_to(image_tag("#{comment.picture}", style: "max-width: 250px; height: auto"), comment.picture)
-    %div
-      = comment.body
-  / %div
-  /   = image_tag "#{post.url_link}", style: "max-width: 50px; height: auto"
-  / %div
-  /   Up-Votes: #{comment.up_vote}
-  /   Down-Votes: #{comment.down_vote}
-  - unless params[:controller] == "comments" and params[:action] == "new"
-    - if current_user
-      = link_to("Comment", new_comment_path(comment))
-      - if comment.user == current_user
-        = "|"
-        = link_to("Edit", edit_comment_path(comment))
-        = "|"
-        = link_to("Delete", comment, method: :delete, data: {confirm: "Do you really want to delete comment?"})
+    = comment.body
+/ %div
+/   = image_tag "#{post.url_link}", style: "max-width: 50px; height: auto"
+/ %div
+/   Up-Votes: #{comment.up_vote}
+/   Down-Votes: #{comment.down_vote}
+- unless params[:controller] == "comments" and params[:action] == "new"
+  - if current_user
+    = link_to("Comment", new_comment_path(comment))
+    - if comment.user == current_user
+      = "|"
+      = link_to("Edit", edit_comment_path(comment))
+      = "|"
+      = link_to("Delete", comment, method: :delete, data: {confirm: "Do you really want to delete comment?"})

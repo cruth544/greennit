@@ -11,18 +11,18 @@
   height: 400px;
 }
 .post-single-index-video {
-  position:relative;
-  padding-bottom:56.25%;
-  padding-top:30px;
-  height:0;
-  overflow:hidden;
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
 }
 .post-single-index-video iframe, .post-single-index-video video, .post-single-index-video object, .post-single-index-video embed {
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .post-index {
   width: 100%;
@@ -45,7 +45,8 @@
   height: auto;
 }
 .post-show-body, .post-single-index-body {
-  border: 1px solid black;
+  border: 1px solid rgba(0, 150, 0, 1);
+  background-color: rgba(0, 100, 0, 0.1);
   border-radius: 6px;
   margin: 20px auto;
   padding: 10px;
