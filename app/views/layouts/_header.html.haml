@@ -29,6 +29,6 @@
           %li
             = link_to(current_user.username, user_path(current_user))
         - else
-          %li
-            = link_to("Log in", new_session_path)
+          %li#nav-bar-log-in-link
+            = link_to("Log in", "#")
 %br

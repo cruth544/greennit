@@ -17,6 +17,7 @@
 @import "posts";
 @import "comments";
 @import "users";
+@import "sessions";
 
 html {
   background-color: rgba(25, 25, 25, 0.05)
@@ -30,6 +31,20 @@ body {
 .greenit-logo {
   font-family: 'IM Fell English SC', serif;
   font-size: 40px;
+}
+.modal-windows {
+  display: none;
+  position: fixed;
+  // padding: 4px;
+  top: 15%;
+  right: 33%;
+  width: 33%;
+  height: auto;
+  border: 4px solid rgba(0, 150, 0, 1);
+  background-color: white;
+  border-radius: 12px;
+}.modal-background-color {
+  background-color: rgba(0, 150, 0, 0.1)
 }
 li {
   font-size: 18px;

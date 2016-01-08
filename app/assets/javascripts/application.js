@@ -15,3 +15,25 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+$(document).on('ready page:load', function () {
+  $("#nav-bar-log-in-link").click(function (event) {
+    $(".modal-windows").slideToggle(400)
+  })
+  $(".log-in-link").click(function (event) {
+    $(".modal-windows").slideToggle(400, function () {
+      $("#register-user-modal").css("display", "none")
+      $(".modal-windows").slideToggle(400, function () {
+        $("#log-in-modal").fadeIn(400)
+      })
+    })
+  })
+  $(".register-user-link").click(function (event) {
+    $(".modal-windows").slideToggle(400, function () {
+      $("#log-in-modal").css("display", "none")
+      $(".modal-windows").slideToggle(400, function () {
+        $("#register-user-modal").fadeIn(400)
+      })
+    })
+  })
+})

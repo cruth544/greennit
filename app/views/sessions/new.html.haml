@@ -2,15 +2,7 @@
 
 - unless current_user
   %div.my-forms
-    = form_for @user, url: create_session_path do |f|
-      %div.form-group.post-form
-        = f.email_field :email, placeholder: "E-mail", :class => "form-control"
-      %div.form-group.post-form
-        = f.password_field :password, placeholder: "Password", :class => "form-control"
-      %div.user-edit
-        = f.submit "Log in"
-      %div
-        = link_to("Don't have an account?", new_user_path)
+    = render "partials/sessions/log_in"
 - else
   %div
     You are logged in as #{current_user.username}

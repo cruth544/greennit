@@ -15,5 +15,10 @@
         #{value}
 
     = yield
+    %div.modal-windows
+      %div.modal-background-color
+        = render 'partials/sessions/log_in', user: User.new
+        = render 'partials/users/register_user', user: User.new
     %footer
       = render 'layouts/footer'
+

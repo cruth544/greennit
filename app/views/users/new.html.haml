@@ -1,16 +1,4 @@
 %h1 Register
 
 %div.my-forms
-  = form_for @user do |f|
-    %div.form-group.post-form
-      = f.email_field :email, placeholder: "E-mail", :class => "form-control"
-    %div.form-group.post-form
-      = f.text_field :username, placeholder: "Username", :class => "form-control"
-    %div.form-group.post-form
-      = f.password_field :password, placeholder: "Password", :class => "form-control"
-    %div.form-group.post-form
-      = f.password_field :password_confirmation, placeholder: "Confirm Password", :class => "form-control"
-    %div.user-edit
-      = f.submit "Create"
-    %div
-      = link_to("Already have an account?", new_session_path)
+  = render "partials/users/register_user"
