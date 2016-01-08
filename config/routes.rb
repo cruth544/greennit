@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post 'sessions/new' => 'sessions#create', as: :create_session
   get 'sessions/destroy' => 'sessions#destroy', as: :destroy_session
 
-  resources :users
+  resources :users, except: [:new]
   get 'posts/all' => 'posts#all', as: :posts_all
   resources :posts
   resources :subgreens, only: [:index, :show, :new, :create, :edit]
