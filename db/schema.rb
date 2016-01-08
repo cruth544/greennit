@@ -43,8 +43,9 @@ ActiveRecord::Schema.define(version: 20160106012740) do
   create_table "subgreens", force: :cascade do |t|
     t.string   "name"
     t.integer  "admin"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "subgreens_users", id: false, force: :cascade do |t|
