@@ -12,6 +12,9 @@
     = "Please #{link_to('Log in', new_session_path)} to comment".html_safe
   %br
 %div
-  = render "partials/comments/comment_index"
-
+  - if @comments.length > 0
+    - @comments.each do |comment|
+      = render "partials/comments/comment_index", :comment => comment
+  - else
+    %div No Comments
 
