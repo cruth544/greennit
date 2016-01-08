@@ -41,6 +41,7 @@ class PostsController < ApplicationController
 
   def create
     new_post = Post.new(post_params)
+    new_post.title = new_post.title.split.map(&:capitalize).join(' ')
     unless is_valid?(new_post)
       redirect_to new_post_path(:subgreen_id => post_params[:subgreen_id])
       return

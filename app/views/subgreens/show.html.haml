@@ -10,8 +10,8 @@
         - if current_user.subgreens.include?(@subgreen)
           %div
             = link_to("Create Post", new_post_path(:subgreen_id => @subgreen.id))
-      / - if @subgreen.description
-      /   %div.subgreenit-description #{@subgreenit.description}
+      - if @subgreen.description
+        %div.subgreenit-description #{@subgreenit.description}
       - if current_user
         -if current_user.subgreens.include?(@subgreen)
           %div.subgreenit-unsubscribe
