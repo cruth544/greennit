@@ -4,6 +4,8 @@ gem "haml-rails", "~> 0.9"
 #paginator
 gem 'kaminari'
 gem 'bootstrap-sass', '~> 3.3.6'
+#upload pictures
+gem 'carrierwave'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use postgresql as the database for Active Record
