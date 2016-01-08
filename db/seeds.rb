@@ -9,7 +9,7 @@ User.delete_all
 the_maker = User.create(
   email:                 "maker@maker.maker",
   username:              "The Maker",
-  profile_pic:           "http://images.techhive.com/images/article/2012/11/reddit_log-100011890-large.jpg",
+  profile_pic:           "greenit-alien.png",
   password:              "The Maker",
   password_confirmation: "The Maker"
   )
@@ -38,7 +38,7 @@ Post.create(
   title:                 "hello, world",
   user_id:               "1",
   subgreen_id:           "1",
-  url_link:              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSqIp7xeTFujvK28UBHn3j0QcAWHISIfDwHw0YLxWTcVb5B0XC7oDP6g5w",
+  url_link:              "greenit-alien.png",
   body:                  "Hi there"
   )
 

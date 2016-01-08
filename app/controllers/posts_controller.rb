@@ -37,6 +37,10 @@ class PostsController < ApplicationController
     unless @subgreen_id
       redirect_to root_path
     end
+    unless current_user
+      flash[:error] = "You must be logged in to post"
+      redirect_to root_path
+    end
   end
 
   def create
@@ -50,29 +54,33 @@ class PostsController < ApplicationController
     if current_user
       if new_post.save
         current_user.posts << new_post
-        # sub_id = new_post.subgreen_id
-        # subgreenit = Subgreen.find(sub_id)
-        # subgreenit.posts << new_post
         redirect_to post_path(new_post)
       else
-        raise "Error"
+        raise "Error saving post"
       end
     else
-      raise "Please log in to post"
+      flash[:error] = "You must be logged in to post"
+      if new_post.subgreen
+        return redirect_to subgreen_path(Subgreen.find(new_post.subgreen))
+      end
+      return redirect_to root_path
     end
   end
 
   def edit
     @post = Post.find(params[:id])
     unless @post.user == current_user
-      redirect_to post_path(@post)
+      flash[:error] = "You must be the creator in order to edit this post"
+      return redirect_to post_path(@post)
     end
   end
 
   def update
     @post = Post.find(params[:id])
+    @post.title = @post.title.split.map(&:capitalize).join(' ')
     unless @post.user == current_user
-      redirect_to post_path(@post)
+      flash[:error] = "You must be the creator in order to edit this post"
+      return redirect_to post_path(@post)
     end
 
     updated_post = @post

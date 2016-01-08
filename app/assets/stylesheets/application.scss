@@ -27,6 +27,14 @@ body {
   font-size: 14px;
   background-color: transparent;
 }
+.greenit-logo {
+  font-family: 'IM Fell English SC', serif;
+  font-size: 40px;
+}
+li {
+  font-size: 18px;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
 a, li {
   color: rgba(0, 150, 0, 1) !important;
 }
@@ -35,6 +43,13 @@ a:hover, li:hover {
 }
 footer {
   clear: both;
+  bottom: 5%;
+}
+.law-stuff {
+  font-size: 12px;
+}
+.greenit-logo-law {
+  font-family: 'IM Fell English SC', serif;
 }
 .my-forms {
   margin: 10px auto;

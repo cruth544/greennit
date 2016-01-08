@@ -1,19 +1,16 @@
 %h1 Register
 
-= form_for @user do |f|
-  %div
-    = f.label "E-mail"
-    = f.email_field :email
-  %div
-    = f.label "Username"
-    = f.text_field :username
-  %div
-    = f.label "Password"
-    = f.password_field :password
-  %div
-    = f.label "Password Confirmation"
-    = f.password_field :password_confirmation
-
-  = f.submit "Create"
-  %div
-    = link_to("Already a User?", new_session_path)
+%div.my-forms
+  = form_for @user do |f|
+    %div.form-group.post-form
+      = f.email_field :email, placeholder: "E-mail", :class => "form-control"
+    %div.form-group.post-form
+      = f.text_field :username, placeholder: "Username", :class => "form-control"
+    %div.form-group.post-form
+      = f.password_field :password, placeholder: "Password", :class => "form-control"
+    %div.form-group.post-form
+      = f.password_field :password_confirmation, placeholder: "Confirm Password", :class => "form-control"
+    %div.user-edit
+      = f.submit "Create"
+    %div
+      = link_to("Already have an account?", new_session_path)

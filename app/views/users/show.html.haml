@@ -5,9 +5,10 @@
 %br
 - if current_user == @user
   %div
-    = link_to("Log out", destroy_session_path, class: "")
-    = "•"
+    %div.user-edit-account
     = link_to("Edit Account", edit_user_path)
+    %div.user-log-out
+    = link_to("Log out", destroy_session_path, class: "")
 - else
   %div
     %h3 Posts
