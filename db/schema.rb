@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20160106012740) do
 
   create_table "subgreens", force: :cascade do |t|
     t.string   "name"
-    t.integer  "admin"
+    t.integer  "user_id"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

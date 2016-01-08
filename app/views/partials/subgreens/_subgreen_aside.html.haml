@@ -2,8 +2,9 @@
   %div
     %h1 #{@subgreen.name}
     %h6 #{@subgreen.users.length} Subscriber#{@subgreen.users.length == 1 ? "" : "s"}
-    - if @subgreen.admin
-      %h6 Admin: #{@subgreen.admin}
+    - if @subgreen.user
+      %h6
+        = "Admin: #{link_to("#{@subgreen.user.username}", user_path(@subgreen.user))}".html_safe
     - if current_user
       - if current_user.subgreens.include?(@subgreen)
         - if params[:controller] == "posts"

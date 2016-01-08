@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
+    redirect_to root_path
   end
 
   def create
@@ -10,7 +11,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      redirect_to new_session_path
+      flash[:error] = "Incorrect log in information"
+      redirect_to root_path
     end
   end
 

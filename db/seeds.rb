@@ -5,11 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.delete_all
+
 the_maker = User.create(
   email:                 "maker@maker.maker",
   username:              "The Maker",
-  profile_pic:           "greenit-alien.png",
+  profile_pic:           "totoro-greenit.png",
   password:              "The Maker",
   password_confirmation: "The Maker"
   )
@@ -28,9 +28,9 @@ harper = User.create(
   password_confirmation: "123"
 )
 
-Subgreen.create(
+the_first = Subgreen.create(
   name:                  "The First",
-  admin:                 "1",
+  user_id:                 "1",
   description:           "The First Subgreenit"
   )
 
@@ -42,4 +42,4 @@ Post.create(
   body:                  "Hi there"
   )
 
-
+the_first.users << the_maker
