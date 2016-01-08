@@ -3,3 +3,8 @@ $(function() {
     $.ajax("2/upvote")
   })
 })
+
+$('video').on('ended', function () {
+  this.load();
+  this.play();
+})

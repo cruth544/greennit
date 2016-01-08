@@ -13,8 +13,43 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "subgreens";
 @import "posts";
 @import "comments";
-@import "subgreens";
 @import "users";
 
+html {
+  background-color: rgba(25, 25, 25, 0.05)
+}
+body {
+  padding-top: 65px;
+  font-family: 'Capriola', sans-serif;
+  font-size: 14px;
+  background-color: transparent;
+}
+a, li {
+  color: rgba(0, 150, 0, 1) !important;
+}
+a:hover, li:hover {
+  color: rgba(0, 75, 0, 1) !important;
+}
+footer {
+  clear: both;
+}
+.my-forms {
+  margin: 10px auto;
+  max-width: 33%;
+}
+.success, .error {
+  display: inline-block;
+  margin: 0 auto;
+}
+.success {
+  color: green;
+}
+.error {
+  background-color: rgba(100, 0, 0, 0.2);
+  color: red;
+  padding: 4px 10px;
+  border-radius: 6px;
+}

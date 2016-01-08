@@ -14,15 +14,20 @@ class CommentsController < ApplicationController
   end
 
   def new
-    redirect_to root_path
-    # @comment = Comment.new
+    @comment = Comment.new
+    unless params[:format]
+      redirect_to root_path
+    end
   end
 
   def create
     new_comment = Comment.new(comment_params)
-    if comment_params[:body] == ""
-      redirect_to post_path(comment_params[:post_id])
-      return
+    unless is_valid?(new_comment)
+      if params[:controller] == "posts"
+        return redirect_to post_path(comment_params[:post_id])
+      else
+        return redirect_to new_comment_path(Comment.find(comment_params[:comment_id]))
+      end
     end
 
     if current_user
@@ -109,6 +114,7 @@ class CommentsController < ApplicationController
     if comment.body != ""
       return true
     end
+    flash[:error] = "Comment cannot be empty"
     return false
   end
 end

@@ -46,15 +46,21 @@ class SubgreensController < ApplicationController
   end
 
   def create
-    subgreen = Subgreen.new(subgreen_params)
-    subgreen.admin = current_user
+    if current_user
+      subgreen = Subgreen.new(subgreen_params)
+      subgreen.name = subgreen.name.split.map(&:capitalize).join(' ')
+      subgreen.admin = current_user
+      unless is_valid?(subgreen)
+        return redirect_to new_subgreen_path
+      end
 
-    if subgreen.save
-      current_user.subgreens << subgreen
-      redirect_to subgreen_path(subgreen)
-    else
-      redirect_to new_subgreen_path
-      raise "Error"
+      if subgreen.save
+        current_user.subgreens << subgreen
+        redirect_to subgreen_path(subgreen)
+      else
+        redirect_to new_subgreen_path
+        raise "Error"
+      end
     end
   end
 
@@ -65,6 +71,18 @@ class SubgreensController < ApplicationController
 
   def subgreen_params
     params.require(:subgreen).permit(:name, :description)
+  end
+
+  def is_valid? subgreenit
+    if subgreenit.name == ""
+      error = "Please name your Subgreenit"
+    elsif subgreenit.description == ""
+      error = "Please give your Subgreenit a description"
+    else
+      return true
+    end
+    flash[:error] = error
+    return false
   end
 
   def merge_sort(lst, sort_by)

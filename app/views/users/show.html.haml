@@ -1,7 +1,7 @@
 %h1
   = @user.username
-%div
-  = image_tag(@user.profile_pic, width: "300px", height: "auto")
+%div.profile-image
+  = image_tag(@user.profile_pic, width: "200px", height: "auto")
 %br
 - if current_user == @user
   %div

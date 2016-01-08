@@ -5,8 +5,14 @@
     %title Greennit
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    %link{:href => "https://fonts.googleapis.com/css?family=Montserrat+Alternates|Capriola|IM+Fell+English+SC", :rel => "stylesheet", :type => "text/css"}/
     = csrf_meta_tags
   %body.text-center
     = render 'layouts/header'
+    - flash.each do |key, value|
+      %div{:class => key}
+        #{value}
+
     = yield
-    = render 'layouts/footer'
+    %footer
+      = render 'layouts/footer'

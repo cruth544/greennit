@@ -1,5 +1,5 @@
 = form_for @post do |f|
-  %div.form-group
+  %div.form-group.post-form
     = f.text_field :title, :placeholder => "Title", :class => "form-control"
   %div.form-group
     = f.hidden_field :subgreen_id, :value => @subgreen_id, :class => "form-control"
