@@ -1,12 +1,15 @@
 %h1.subgreen-header Subgreenits
 
-%div
-  = "Search for SubGreenit"
-  = form_tag('/subgreens', method: 'get') do
-    = text_field_tag :search, nil, placeholder: "Search"
-    = submit_tag "Search", "class" => "btn-sm btn-primary"
-%div
+%div.subgreenit-search
+  %div
+    = "Search for SubGreenit"
+  %div.search-form
+    = form_tag('/subgreens', method: 'get') do
+      = text_field_tag :search, nil, placeholder: "Search"
+      = submit_tag "Search", "class" => "btn-sm btn-primary"
+%div.create-subgreenit
   = "Don't see one you like?"
   = link_to("Create one!", new_subgreen_path)
-
-= render "partials/subgreens/subgreen_index"
+%div.subgreenit-index
+  %div.subgreenit-index-title
+    = render "partials/subgreens/subgreen_index"

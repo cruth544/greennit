@@ -6,8 +6,9 @@
           %div.post-single-index-title
             = link_to(post.title, post_path(post))
           - if post.subgreen
-            %div.post-single-index-subgreenit
-              = link_to("#{post.subgreen.name}", subgreen_path(post.subgreen))
+            - unless params[:controller] == "subgreens" and params[:action] == "show"
+              %div.post-single-index-subgreenit
+                = link_to("#{post.subgreen.name}", subgreen_path(post.subgreen))
           - unless post.url_link == ""
             - if embeded_video(post.url_link)
               %div.post-single-index-video

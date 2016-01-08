@@ -5,3 +5,45 @@
 .subgreen-header {
   margin: 20px auto;
 }
+.subgreenit-search {
+  margin: 20px auto;
+}
+.create-subgreenit {
+  margin: 20px auto;
+  margin-top: -10px;
+}
+.subgreenit-index {
+  // max-width: 70%;
+  // background-color: rgba(0, 102, 0, 0.1);
+  // border: 1px dotted rgba(0, 102, 0, 0.1);
+  border-radius: 10px;
+  margin: 0 auto;
+}
+.subgreenit-index-single {
+  margin: 0 auto;
+  padding: 2px;
+}
+.subgreenit-show {
+  float: left;
+  margin: 0 auto;
+  width: 100%;
+}
+.subgreenit-aside {
+  top: 50px;
+  left: 85%;
+  position: fixed;
+  width: 15%;
+  border: 1px solid rgba(0, 102, 0, 0.1);
+  background-color: rgba(0, 102, 0, 0.1);
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto;
+  // margin-right: 50px;
+}
+.subgreenit-footer {
+  clear: both;
+}
+.subgreenit-unsubscribe {
+  margin: 6px auto;
+  margin-top: 20px;
+}

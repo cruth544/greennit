@@ -1,22 +1,27 @@
-%h1 #{@subgreen.name}
-%h4 SubGreenit
-%h6 #{@subgreen.users.length} Subscriber#{@subgreen.users.length == 1 ? "" : "s"}
-
-- if current_user
-  - if current_user.subgreens.include?(@subgreen)
+%div.subgreenit-parent-div
+  %div.subgreenit-aside
     %div
-      = link_to("Create Post", new_post_path(:subgreen_id => @subgreen.id))
-  - else
+      %h1 #{@subgreen.name}
+      / %h4 SubGreenit
+      %h6 #{@subgreen.users.length} Subscriber#{@subgreen.users.length == 1 ? "" : "s"}
+      - if @subgreen.admin
+        %h6 Admin: #{@subgreen.admin}
+      - if current_user
+        - if current_user.subgreens.include?(@subgreen)
+          %div
+            = link_to("Create Post", new_post_path(:subgreen_id => @subgreen.id))
+      / - if @subgreen.description
+      /   %div.subgreenit-description #{@subgreenit.description}
+      - if current_user
+        -if current_user.subgreens.include?(@subgreen)
+          %div.subgreenit-unsubscribe
+            = link_to("Unsubscribe?", :unsubscribe => true)
+      - else
+        %div
+          = link_to(:subscribe => true) do
+            Subscribe to <br>"#{@subgreen.name}"
+          / # = link_to("Subscribe to '#{@subgreen.name}'", :subscribe => true)
+  %div.subgreenit-show
     %div
-      = link_to(:subscribe => true) do
-        Subscribe to <br>"#{@subgreen.name}"
-      / # = link_to("Subscribe to '#{@subgreen.name}'", :subscribe => true)
-
-%div
-  - @posts = @subgreen.posts.reverse_order
-  = render "partials/posts/post_index"
-
-- if current_user
-  - if current_user.subgreens.include?(@subgreen)
-    %div
-      = link_to("Unsubscribe?", :unsubscribe => true)
+      - @posts = @subgreen.posts.reverse_order
+      = render "partials/posts/post_index"
