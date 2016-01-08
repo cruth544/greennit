@@ -22,7 +22,9 @@ class SubgreensController < ApplicationController
     if params[:unsubscribe] == "true"
       return unsubscribe
     end
+    @subgreens = Subgreen.all
     @subgreen = Subgreen.find(params[:id])
+    @posts = @subgreen.posts.reverse_order
   end
 
   def subscribe
