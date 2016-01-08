@@ -1,6 +1,7 @@
 %div.subgreenit-aside
   %div
-    %h1 #{@subgreen.name}
+    %h1
+      = link_to(@subgreen.name, subgreen_path(@subgreen))
     %h6 #{@subgreen.users.length} Subscriber#{@subgreen.users.length == 1 ? "" : "s"}
     - if @subgreen.user
       %h6

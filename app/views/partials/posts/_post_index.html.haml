@@ -15,7 +15,7 @@
                 = link_to(embeded_video(post.url_link), post_path(post))
             - else
               %div.post-single-index-image
-                = link_to(image_tag(post.url_link), post_path(post))
+                = link_to(image_tag(post.url_link, style: "max-width: 100%; height: auto"), post_path(post))
           - else
             - if post.body != ""
               %div.post-single-index-body

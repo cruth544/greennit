@@ -10,7 +10,7 @@
         = link_to(embeded_video(comment.picture), comment.picture)
     - else
       %div
-        = link_to(image_tag("#{comment.picture}", style: "max-width: 250px; height: auto"), comment.picture)
+        = link_to(image_tag("#{comment.picture}", style: "max-width: 66%; height: auto"), comment.picture)
   %div
     = comment.body
 / %div

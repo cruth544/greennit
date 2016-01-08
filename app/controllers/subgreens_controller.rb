@@ -55,7 +55,7 @@ class SubgreensController < ApplicationController
     if current_user
       subgreen = Subgreen.new(subgreen_params)
       subgreen.name = subgreen.name.split.map(&:capitalize).join(' ')
-      subgreen.admin = current_user
+      subgreen.user = current_user
       unless is_valid?(subgreen)
         return redirect_to new_subgreen_path(:name => subgreen.name, description: subgreen.description)
       end

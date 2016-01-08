@@ -13,7 +13,7 @@
     = link_to(embeded_video(@post.url_link), @post.url_link)
 - else
   %div
-    = link_to(image_tag("#{@post.url_link}", style: "max-width: 80%; height: auto"), @post.url_link)
+    = link_to(image_tag("#{@post.url_link}", style: "max-width: 70%; height: auto"), @post.url_link)
 - unless @post.body == ""
   %div.post-show-body
     = @post.body
