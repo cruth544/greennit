@@ -91,7 +91,7 @@ class ApplicationController < ActionController::Base
     if tag == :iframe
       attribute = "allowfullscreen"
     elsif tag == :video
-      attribute = "autoplay video loop"
+      attribute = "video loop"
     end
     html_string = "<#{tag.to_s} class='video' src='#{source}' frameborder='0' #{attribute}></#{tag}>".html_safe
   end
